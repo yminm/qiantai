@@ -14,6 +14,7 @@ import api, { domain } from './js/api.js'
 
 import './less/index.less'
 // import './less/index.less'
+import './assets/css/style.css'
 
 Vue.use(ElementUI)
 

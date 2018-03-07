@@ -2,11 +2,11 @@
     <div class="login">
         <section>
             <el-form :model="ruleForm2" status-icon  :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
-                <el-form-item label="账号" prop="uname">
-                    <el-input type="text" v-model="ruleForm2.uname" autofocus auto-complete="off"></el-input>
+                <el-form-item label="账号" prop="user_name">
+                    <el-input type="text" v-model="ruleForm2.user_name" autofocus auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="密码" prop="upwd">
-                    <el-input type="password" v-model="ruleForm2.upwd" auto-complete="off"></el-input>
+                <el-form-item label="密码" prop="password">
+                    <el-input type="password" v-model="ruleForm2.password" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="success" @click="submitForm('ruleForm2')">提交</el-button>
@@ -34,14 +34,14 @@ export default {
   
       return {
         ruleForm2: {
-          uname: '',
-          upwd: ''
+          user_name: 'ivanyb',
+          password: ''
         },
         rules2: {
-          uname: [ { required: true, message: '请输入用户名', trigger: 'blur' } ],
+          user_name: [ { required: true, message: '请输入用户名', trigger: 'blur' } ],
         // 当鼠标离开的时候触发 前面这个函数
         //   uname: [ { validator: validatePass, trigger: 'blur' } ],
-          upwd: [ { required: true, message: '请输入密码', trigger: 'blur' } ]
+          password: [ { required: true, message: '请输入密码', trigger: 'blur' } ]
         }
       };
     },
@@ -56,11 +56,11 @@ export default {
                     this.$alert("登录成功",'提示',{
                         callback: ()=>{
                             // 把用户名存储起来 在admin页面需要使用 通过localstorage来存储
-                            localStorage.setItem('uname',res.data.message.uname);
+                            localStorage.setItem('user_name',res.data.message.user_name);
                             // 登录成功后 如果之前有页面 则进入之前页面 没有则进入Admin页面
                             // this.$router.push({ name: 'admin'})
                             // console.log(this.$route.query.next || '/admin');
-                            this.$router.push({ path: this.$route.query.next || '/admin'});
+                            this.$router.push({ path: this.$route.query.next || '/goods/list'});
 
 //                              let nextPage = this.$route.query.next || '/admin';
 // +                                // 登陆成功后, 跳转到用户未登陆前要访问的页面
